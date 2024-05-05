@@ -1,0 +1,144 @@
+Auxiliar:
+    TelaInicial:
+    TelaAlfabeto:
+    TelaBrincar:
+    TelaCriar:
+
+<TelaInicial>:
+    name: "tela_inicial"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'amarelo.jpg'
+        Button:
+            text: "mudar"
+            font_size: 15
+            size_hint_x:  0.15
+            size_hint_y: None
+            height: 50
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.95}
+
+        Button:
+            text: "ALFABETO"
+            font_size: 40
+            size_hint_x:  0.7
+            size_hint_y: None
+            height: 70
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                app.root.current = "tela_alfabeto"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "CRIAR"
+            font_size: 40
+            size_hint_x:  0.7
+            size_hint_y: None
+            height: 70
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                app.root.current = "tela_criar"
+                root.manager.transition.direction = "up"
+
+        Button:
+            text: "BRINCAR"
+            font_size: 40
+            size_hint_x:  0.7
+            size_hint_y: None
+            height: 70
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                app.root.current = "tela_brincar"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "SAIR"
+            font_size: 40
+            size_hint_x:  0.7
+            size_hint_y: None
+            height: 70
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.5}
+            on_release: root.sair()
+
+<TelaAlfabeto>:
+    name: "tela_alfabeto"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'amarelo.jpg'
+        Button:
+            text: "Voltar"
+            font_size: 20
+            size_hint_x:  0.2
+            size_hint_y: None
+            height: 30
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.1}
+            on_release:
+                app.root.current = "tela_inicial"
+                root.manager.transition.direction = "right"
+
+<TelaBrincar>:
+    name: "tela_brincar"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'amarelo.jpg'
+        Button:
+            text: "Voltar"
+            font_size: 20
+            size_hint_x:  0.2
+            size_hint_y: None
+            height: 30
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.1}
+            on_release:
+                app.root.current = "tela_inicial"
+                root.manager.transition.direction = "left"
+
+<TelaCriar>:
+    name: "tela_criar"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'amarelo.jpg'
+        Button:
+            text: "Voltar"
+            font_size: 20
+            size_hint_x:  0.2
+            size_hint_y: None
+            height: 30
+            background_color: (0/255, 0/255, 255/255)
+            pos_hint: {'center_x': 0.1}
+            on_release:
+                app.root.current = "tela_inicial"
+                root.manager.transition.direction = "down"
