@@ -1,31 +1,767 @@
-FloatLayout:
-    orientation: "vertical"
-    size: root.width, root.height
-    canvas:
-        Color: 
-            rgba: 1, 1, 1, 1
+Auxiliar:
+    TelaInicial:
+    TelaAlfabeto:
+    TelaCriar
 
-    Label:
-        text: "Qunatidade de Linhas X Colunas:"
-        font_size: 25
-        size_hint: (0.7, 0.1)
-        pos_hint: {"center_x": 0.5, "y": 0.9}
+<TelaInicial>:
+    name: "tela_inicial"
+    FloatLayout:
+        padding: 3
+        orientation: "vertical"
+        canvas.before: 
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle: 
+                pos: self.pos
+                size: self.size
+        Button:
+            # text é simplismente texto
+            text: "ALFABETO"
+
+            #font_size: tamanho da letra
+            font_size: 30
+
+            # Tamanho do botão: 0.38 = largura, 0.1 = altura
+            # Obs: o tamanho é feito em porcentagem da tela sendo: 1.0 = 100% e 0.01 = 1%
+            size_hint: (0.38, 0.1) 
+
+            # Posicinamento do botão 
+            #   x >, y ^ : conta a partir do canto inferior esquerdo do botão
+            # center_x, center_y: conta a partir do centro botão
+            # Obs: todos levam em consideração o ponto inicial sendo o canto inferior esquedo da tela
+            pos_hint: {"center_x": 0.5, "y": 0.4} 
+
+            #color: cor da letra
+            color: (255/255, 255/255, 255/255)
+
+            #background_color: cor de fundo
+            background_color: (0/255, 0/255, 0/255)
+
+            on_release:
+                app.root.current = "tela_alfabeto"
+                root.manager.transition.direction = "left"
+            
+
+        Button:
+            text: "BRINCAR"
+            font_size: 30
+            size_hint: (0.38, 0.1)
+            pos_hint: {"x": 0.1, "y": 0.28}
+            color: (255/255, 255/255, 255/255)
+            background_color: (0/255, 0/255, 150/255)
+
+        Button:
+            text: "CRIAR"
+            font_size: 30
+            size_hint: (0.38, 0.1)
+            pos_hint: {"x": 0.5, "y": 0.28}
+            color: (255/255, 255/255, 255/255)
+            background_color: (0/255, 0/255, 150/255)
+            on_release:
+                app.root.current = "tela_criar"
+                root.manager.transition.direction = "down"
+
+<TelaAlfabeto>:
+    name: "tela_alfabeto"
+    FloatLayout:
+        Button:
+            text: "VOLTAR"
+            font_size: 20
+            size_hint: (0.2, 0.07)
+            pos_hint: {"x": 0.78, "y": 0.02}
+            background_color: (255/255, 0/255, 0/255)
+            on_release:
+                app.root.current = "tela_inicial"
+                root.manager.transition.direction = "right"
+    GridLayout:
+        padding: 3
+        rows: 2
         
-    GridLayout:    
-        cols: 2
-        spacing: "5dp"
-        rows: 1   
+        BoxLayout:
+            size_hint_y: 0.4
+            canvas.before: 
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle: 
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source: "ceu.jpg"
+                size_hint: 1, 1
 
-        TextInput:
-            id: "qt_linhas"
-            font_size: 22
-            size_hint_y: None
-            height: 40
+        GridLayout:
+            cols: 6
+            spacing: 3
+            size_hint_y: 0.6
 
-        TextInput:
-            id: "qt_colunas"
-            font_size: 22
-            size_hint_y: None
-            height: 40
+            Button:
+                text: "A"
+                background_color: 1, 0, 1, 1
+            
+            Button:
+                text: "B"
+            
+            Button:
+                text: "C"
+            
+            Button:
+                text: "D"
+            
+            Button:
+                text: "E"
+            
+            Button:
+                text: "F"
+            
+            Button:
+                text: "G"
+            
+            Button:
+                text: "H"
+            
+            Button:
+                text: "I"
+            
+            Button:
+                text: "J"
+            
+            Button:
+                text: "K"
+            
+            Button:
+                text: "L"
+            
+            Button:
+                text: "M"
+            
+            Button:
+                text: "N"
+            
+            Button:
+                text: "O"
+            
+            Button:
+                text: "P"
+            
+            Button:
+                text: "Q"
+            
+            Button:
+                text: "R"
+            
+            Button:
+                text: "S"
+            
+            Button:
+                text: "T"
+            
+            Button:
+                text: "U"
+            
+            Button:
+                text: "V"
+            
+            Button:
+                text: "W"
+            
+            Button:
+                text: "X"
+            
+            Button:
+                text: "Y"
+            
+            Button:
+                text: "Z"
 
-        
+<TelaCriar>:
+    name: "tela_criar"
+    FloatLayout:
+        Button:
+            text: "VOLTAR"
+            font_size: 20
+            size_hint: (0.2, 0.07)
+            pos_hint: {"x": 0.05, "y": 0.92}
+            background_color: (255/255, 0/255, 0/255)
+            on_release:
+                app.root.current = "tela_inicial"
+                root.manager.transition.direction = "up"
+    GridLayout:
+        padding: 3
+        rows: 2
+        BoxLayout:
+            size_hint_y: 0.3
+            canvas.before: 
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle: 
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: digitar
+                font_size: 25
+        ScrollView:
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                GridLayout:
+                    cols: 6
+                    spacing: 2
+                    Button:
+                        text: "A"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "AL"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "AM"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "AN"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "AR"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "AS"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra E
+                    Button:
+                        text: "E"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "EL"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "EM"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "EN"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "ER"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "ES"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra I
+                    Button:
+                        text: "I"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "IL"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "IM"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "IN"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "IR"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "IS"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra O
+                    Button:
+                        text: "O"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "OL"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "OM"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "ON"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "OR"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "OS"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra U
+                    Button:
+                        text: "U"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "UL"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "UM"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "UN"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "UR"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "US"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra B
+                    Button:
+                        text: "B"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "BA"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "BE"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "BI"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "BO"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "BU"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra C
+                    Button:
+                        text: "C"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "CA"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "CE"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "CI"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "CO"
+                        size_hint_y: None
+                        height: 40
+                    
+                    Button:
+                        text: "CU"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra D
+                    Button:
+                        text: "D"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "DA"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "DE"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "DI"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "DO"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "DU"
+                    # Sílabas: Letra F
+                    Button:
+                        text: "F"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "FA"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "FE"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "FI"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "FO"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "FU"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra G
+                    Button:
+                        text: "G"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "GA"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "GE"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "GI"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "GO"
+                        size_hint_y: None
+                        height: 40              
+                    Button:
+                        text: "GU"
+                        size_hint_y: None
+                        height: 40
+                    # Sílabas: Letra H
+                    Button:
+                        text: "H"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "HA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "HE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "HI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "HO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "HU"
+                    # Sílabas: Letra J
+                    Button:
+                        text: "J"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "JA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "JE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "JI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "JO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "JU"
+                    # Sílabas: Letra L
+                    Button:
+                        text: "L"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "LA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "LE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "LI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "LO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "LU"
+                    # Sílabas: Letra M
+                    Button:
+                        text: "M"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "MA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ME"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "MI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "MO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "MU"
+                    # Sílabas: Letra N
+                    Button:
+                        text: "N"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "NA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "NE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "NI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "NO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "NU"
+                    # Sílabas: Letra P
+                    Button:
+                        text: "P"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "PA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "PE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "PI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "PO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "PU"
+                    # Sílabas: Letra R
+                    Button:
+                        text: "R"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "RA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "RE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "RI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "RO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "RU"
+                    # Sílabas: Letra S
+                    Button:
+                        text: "S"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "SA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "SE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "SI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "SO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "SU"
+                    # Sílabas: Letra T
+                    Button:
+                        text: "T"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "TA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "TE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "TI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "TO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "TU"
+                    # Sílabas: Letra V
+                    Button:
+                        text: "V"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "VA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "VE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "VI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "VO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "VU"
+                    # Sílabas: Letra X
+                    Button:
+                        text: "X"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "XA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "XE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "XI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "XO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "XU"
+                    # Sílabas: Letra Z
+                    Button:
+                        text: "Z"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ZA"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ZE"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ZI"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ZO"
+                        size_hint_y: None
+                        height: 40                    
+                    Button:
+                        text: "ZU"   

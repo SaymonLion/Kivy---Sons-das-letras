@@ -1,32 +1,39 @@
 from kivy.app import App
-from kivy.uix.widget import Widget
+from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
-from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager,Screen
-Window.size = (400, 600)
+from kivy.core.window import Window
+from kivy.uix.button import Button
+from kivy.uix.layout import Layout
+
+Window.size = (320, 500)
+alfabeto = ["A", "B", "C", "D", "E", "F", "G", "H", 
+          "I", "J", "K", "L", "M", "N", "O", "P", 
+          "Q", "R", "S", "T", "U", "V", "W", "X", 
+          "Y", "Z"]
 
 class TelaInicial(Screen):
-    def sair(self):
-        App.get_running_app().stop()
-        Window.close()
+    pass
 
 class TelaAlfabeto(Screen):
-    def tela_alfabeto(self):
-        pass
+    pass
 
 class TelaBrincar(Screen):
-    def tela_brincar(self):
-        pass
+    pass
 
 class TelaCriar(Screen):
-    def tela_criar(self):
-        pass
+    pass
+    #def inserir_letras(self):
+    #    grid_letras = self.root.ids.grade
+    #    for letra in alfabeto:
+    #        btn = Button(text=str(letra), size_hint_y=None, height=40)
+    #        grid_letras.add_wiget(btn)
 
 class Auxiliar(ScreenManager):
     pass
 
-class Bingo(App):
+class Carregar(App):
     def build(self):
-        return Builder.load_file('tela.kv')
-
-Bingo().run()
+        return Builder.load_file("kivy.kv")
+    
+Carregar().run()
